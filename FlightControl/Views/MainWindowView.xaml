@@ -1,0 +1,92 @@
+﻿<Window x:Class="FlightControl.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <Separator/>
+                <MenuItem Header="_Logger" Click="OpenLogWindow"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Height="28"
+                    Width="120"
+                    Content="Get Ports"
+                    Command="{Binding GetPorts}"/>
+            <ComboBox Grid.Column="1" 
+                      Height="28" 
+                      Width="200" 
+                      ItemsSource="{Binding ComPorts}" 
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding SelectedComPort}"/>
+            <Button Grid.Column="2"
+                    Height="28"
+                    Width="120"
+                    Content="{Binding ConnectLabel}"
+                    Command="{Binding ConnectToPort}"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="260"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" 
+                   Padding="10,0"
+                   FontSize="18"
+                   FontWeight="DemiBold"
+                   VerticalAlignment="Center"
+                   Content="Line 1:"/>
+            <TextBox Grid.Column="1" 
+                     Height="28" 
+                     Text="{Binding Line1}"/>
+            <Button Grid.Column="4"
+                    Height="28"
+                    Width="120"
+                    Content="Send"
+                    Command="{Binding SendData}"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" 
+                   Padding="10,0"
+                   FontSize="18"
+                   FontWeight="DemiBold"
+                   VerticalAlignment="Center"
+                   Content="Line 2:"/>
+            <TextBox Grid.Column="1"
+                     Height="28" 
+                     Text="{Binding Line2}"/>
+        </Grid>
+
+    </Grid>
+</Window>
