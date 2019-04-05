@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightControl"
+        xmlns:customcontrols="clr-namespace:FlightControl.CustomControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition Height="177"/>
+            <RowDefinition Height="177"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
@@ -87,6 +89,18 @@
                      Height="28" 
                      Text="{Binding Line2}"/>
         </Grid>
-
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <customcontrols:ButtonControl x:Name="Button1"
+                                          Grid.Column="0"/>
+            <customcontrols:ButtonControl x:Name="Button2"
+                                          Grid.Column="1"/>
+            <customcontrols:ButtonControl x:Name="Button3"
+                                          Grid.Column="2"/>
+        </Grid>
     </Grid>
 </Window>
