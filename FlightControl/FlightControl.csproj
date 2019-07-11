@@ -82,6 +82,8 @@
     <Compile Include="Events\LogMessageEvent.cs" />
     <Compile Include="Events\LogMessageEventArgs.cs" />
     <Compile Include="Models\ComPort.cs" />
+    <Compile Include="Models\ControlValues.cs" />
+    <Compile Include="Models\KeyCommand.cs" />
     <Compile Include="Utility\NlogEventAggregatorTarget.cs" />
     <Compile Include="Utility\Enums.cs" />
     <Compile Include="ViewModels\LogViewModel.cs" />

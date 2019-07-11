@@ -6,20 +6,33 @@
              xmlns:local="clr-namespace:FlightControl.CustomControls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             Width="120">
+             Width="240"
+             Height="118">
     <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
             <RowDefinition Height="28"/>
-            <RowDefinition Height="60"/>
             <RowDefinition Height="28"/>
-            <RowDefinition Height="28"/>
-            <RowDefinition Height="33"/>
+            <RowDefinition Height="34"/>
         </Grid.RowDefinitions>
-        <xctk:ColorPicker x:Name="ColorPicker"
+        <Label Grid.Column="0" 
+               Grid.ColumnSpan="2"
+               Grid.Row="0"
+               FontWeight="DemiBold"
+               Content="Label"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <xctk:ColorPicker Grid.Row="1"
+                          Grid.Column="0"
+                          x:Name="ColorPicker"
                           Margin="5,5,5,0"
                           DisplayColorAndName="True"
                           SelectedColorChanged="SelectedColorChanged"/>
-        <Canvas Grid.Row="1">
+        <Canvas Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
             <Rectangle x:Name="ButtonDisplay"
                 Width="50"
                 Height="50"
@@ -28,16 +41,19 @@
                 Canvas.Top="5" />
         </Canvas>
         <TextBox x:Name="Label1"
-                 Grid.Row="2"
+                 Grid.Column="1"
+                 Grid.Row="1"
                  Margin="5,5,5,0"
                  TextAlignment="Center"
                  Text="1234567890"/>
         <TextBox x:Name="Label2"
-                 Grid.Row="3"
+                 Grid.Column="1"
+                 Grid.Row="2"
                  Margin="5,5,5,0"
                  TextAlignment="Center"/>
         <TextBox x:Name="Command"
-                 Grid.Row="4"
+                 Grid.Column="1"
+                 Grid.Row="3"
                  Margin="5,5,5,5"
                  TextAlignment="Center"/>
     </Grid>
