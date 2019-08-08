@@ -6,17 +6,14 @@
         xmlns:local="clr-namespace:FlightControl"
         xmlns:customcontrols="clr-namespace:FlightControl.CustomControls"
         mc:Ignorable="d"
-        Title="MainWindow" Width="800">
+        Title="MainWindow" MaxWidth="800" MinWidth="800" MaxHeight="580" MinHeight="340">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
@@ -66,12 +63,13 @@
                    Content="Line 1:"/>
             <TextBox Grid.Column="1" 
                      Height="28" 
-                     Text="{Binding Line1}"/>
+                     Text="{Binding  ButtonValues1_1.TopLabel}"/>
             <Button Grid.Column="4"
                     Height="28"
                     Width="120"
                     Content="Send"
-                    Command="{Binding SendData}"/>
+                    Command="{Binding SendData}"
+                    IsEnabled="{Binding SerialPortOpen}"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -90,19 +88,82 @@
             <TextBox Grid.Column="1"
                      Height="28" 
                      Text="{Binding Line2}"/>
+            <Button Grid.Column="4"
+                    Height="28"
+                    Width="120"
+                    Content="Test"
+                    Command="{Binding TestButton}"/>
         </Grid>
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <customcontrols:ButtonControl x:Name="Button1"
+        <ScrollViewer Grid.Row="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="152"/>
+
+                    <RowDefinition Height="122"/>
+                    <RowDefinition Height="122"/>
+                </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <customcontrols:ToggleControl x:Name="Toggle1"
+                                          NameLabel="Toggle 1"
+                                          UpValues="{Binding Toggle1Up}"
+                                          DownValues="{Binding Toggle1Down}"
                                           Grid.Column="0"/>
-            <customcontrols:ButtonControl x:Name="Button2"
+                <customcontrols:ToggleControl x:Name="Toggle2"
+                                          NameLabel="Toggle 2"
+                                          UpValues="{Binding Toggle2Up}"
+                                          DownValues="{Binding Toggle2Down}"
                                           Grid.Column="1"/>
-            <customcontrols:ButtonControl x:Name="Button3"
+                <customcontrols:ToggleControl x:Name="Toggle3"
+                                          NameLabel="Toggle 3"
+                                          UpValues="{Binding Toggle3Up}"
+                                          DownValues="{Binding Toggle3Down}"
                                           Grid.Column="2"/>
-        </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <customcontrols:ButtonControl x:Name="Button1"
+                                          NameLabel="Button 1"
+                                          Values="{Binding Button1Values}"
+                                          Grid.Column="0"/>
+                <customcontrols:ButtonControl x:Name="Button2"
+                                          NameLabel="Button 2"
+                                          Values="{Binding Button2Values}"
+                                          Grid.Column="1"/>
+                <customcontrols:ButtonControl x:Name="Button3"
+                                          NameLabel="Button 3"
+                                          Values="{Binding Button3Values}"
+                                          Grid.Column="2"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <customcontrols:ButtonControl x:Name="Button4"
+                                          NameLabel="Button 4"
+                                          Values="{Binding Button4Values}"
+                                          Grid.Column="0"/>
+                <customcontrols:ButtonControl x:Name="Button5"
+                                          NameLabel="Button 5"
+                                          Values="{Binding Button5Values}"
+                                          Grid.Column="1"/>
+                <customcontrols:ButtonControl x:Name="Button6"
+                                          NameLabel="Button 6"
+                                          Values="{Binding Button6Values}"
+                                          Grid.Column="2"/>
+            </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

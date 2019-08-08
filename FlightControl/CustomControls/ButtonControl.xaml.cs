@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using FlightControl.Models;
 
 namespace FlightControl.CustomControls
 {
@@ -8,6 +10,32 @@ namespace FlightControl.CustomControls
     /// </summary>
     public partial class ButtonControl : UserControl
     {
+        public static DependencyProperty NameLabelProperty =
+            DependencyProperty.Register(
+                nameof(NameLabel),
+                typeof(string),
+                typeof(ButtonControl));
+
+        public string NameLabel
+        {
+            get => (string)GetValue(NameLabelProperty);
+            set => SetValue(NameLabelProperty, value);
+        }
+
+
+        public static DependencyProperty ValuesProperty =
+            DependencyProperty.Register(
+                nameof(Values),
+                typeof(ControlValues),
+                typeof(ButtonControl));
+
+
+        public ControlValues Values
+        {
+            get => (ControlValues)GetValue(ValuesProperty);
+            set => SetValue(ValuesProperty, value);
+        }
+
         public ButtonControl()
         {
             InitializeComponent();

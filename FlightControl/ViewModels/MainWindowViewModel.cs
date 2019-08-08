@@ -21,19 +21,22 @@ namespace FlightControl.ViewModels
         private readonly SerialPort serialPort;
         private string line1;
         private string line2;
+        private ControlValues buttonValues1_1;
 
         public ICommand GetPorts { get; set; }
         public ICommand ConnectToPort { get; set; }
         public ICommand SendData { get; set; }
+        public ICommand TestButton { get; set; }
 
         public ObservableCollection<ComPort> ComPorts { get; set; }
         
-
         public ComPort SelectedComPort
         {
             get => selectedComPort;
             set => SetProperty(ref selectedComPort, value);
         }
+
+        public bool SerialPortOpen => serialPort?.IsOpen ?? false;
 
         public string ConnectLabel
         {
@@ -53,16 +56,26 @@ namespace FlightControl.ViewModels
             set => SetProperty(ref line2, value);
         }
 
+        public ControlValues ButtonValues1_1
+        {
+            get => buttonValues1_1;
+            set => SetProperty(ref buttonValues1_1, value);
+        }
 
 
         public MainWindowViewModel()
         {
+   
+
+            ButtonValues1_1 = new ControlValues();
+
             ComPorts = new ObservableCollection<ComPort>();
             
 
             GetPorts = new DelegateCommand(OnGetPorts);
             ConnectToPort = new DelegateCommand(OnChangeConnectionState);
             SendData= new DelegateCommand(OnSendSerialMessage);
+            TestButton = new DelegateCommand(OnTestButton);
 
             ConnectLabel = "Connect";
 
@@ -73,7 +86,12 @@ namespace FlightControl.ViewModels
             logger.Debug("Started!");
         }
 
-        
+        private void OnTestButton()
+        {
+            var test = ButtonValues1_1.Color;
+        }
+
+
         private void OnChangeConnectionState()
         {
             if (SelectedComPort == null)
@@ -129,7 +147,7 @@ namespace FlightControl.ViewModels
 
             //TODO: Add neopixel values
 
-            sb.Append(Line1.Length.ToString("D2"));
+            sb.Append(Line1?.Length.ToString("D2"));
             sb.Append(Line1);
 
             if (sb.Length == 0)

@@ -1,14 +1,13 @@
-﻿<UserControl x:Class="FlightControl.CustomControls.ButtonControl"
+﻿<UserControl x:Class="FlightControl.CustomControls.ToggleControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightControl.CustomControls"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              x:Name="parent"
              Width="240"
-             Height="120">
+             Height="150">
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBox}" x:Key="ValidationStyle" BasedOn="{StaticResource WaterMarkTextBox}">
             <Style.Triggers>
@@ -27,6 +26,7 @@
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
+            <RowDefinition Height="28"/>
             <RowDefinition Height="34"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" 
@@ -36,42 +36,67 @@
                Content="{Binding NameLabel}"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
-        <xctk:ColorPicker Grid.Row="1"
-                          Grid.Column="0"
-                          x:Name="ColorPicker"
-                          Margin="5,5,5,0"
-                          DisplayColorAndName="True"
-                          SelectedColor="{Binding Path=Values.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          SelectedColorChanged="SelectedColorChanged"/>
-        <Canvas Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
-            <Rectangle x:Name="ButtonDisplay"
-                Width="50"
-                Height="50"
-                Fill="Blue"
-                Canvas.Left="35"
-                Canvas.Top="5" />
-        </Canvas>
-        <TextBox x:Name="Label1"
-                 Grid.Column="1"
-                 Grid.Row="1"
+        <Label Grid.Column="0" 
+               Grid.Row="1"
+               FontWeight="DemiBold"
+               Content="Up"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <TextBox x:Name="UpLabel1"
+                 Grid.Column="0"
+                 Grid.Row="2"
                  Margin="5,5,5,0"
                  TextAlignment="Center"
-                 Style="{StaticResource WaterMarkTextBox}"
-                 local:WatermarkTextHelper.WatermarkText="Line 1"
-                 Text="{Binding Path=Values.TopLabel}"/>
-        <TextBox x:Name="Label2"
+                 Text= "{Binding Path=UpValues.TopLabel}"/>
+        <TextBox x:Name="UpLabel2"
+                 Grid.Column="0"
+                 Grid.Row="3"
+                 Margin="5,5,5,0"
+                 TextAlignment="Center"
+                 Text="{Binding Path=UpValues.BottomLabel}">
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=UpLabel1, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="UpCommand"
+                 Grid.Column="0"
+                 Grid.Row="4"
+                 Margin="5,5,5,5"
+                 TextAlignment="Center"
+                 Text="{Binding Path=UpValues.KeyCommandsLabel}"/>
+        <Label Grid.Column="1" 
+               Grid.Row="1"
+               FontWeight="DemiBold"
+               Content="Down"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <TextBox x:Name="DownLabel1"
                  Grid.Column="1"
                  Grid.Row="2"
                  Margin="5,5,5,0"
                  TextAlignment="Center"
-                 Style="{StaticResource ValidationStyle}"
-                 local:WatermarkTextHelper.WatermarkText="Line 2"
-                 Text="{Binding Path=Values.BottomLabel}"/>
-            <TextBox x:Name="Command"
+                 Style="{StaticResource WaterMarkTextBox}"
+                 local:WatermarkTextHelper.WatermarkText="Line 1"
+                 Text="{Binding Path=DownValues.TopLabel}"/>
+        <TextBox x:Name="DownLabel2"
                  Grid.Column="1"
                  Grid.Row="3"
+                 Margin="5,5,5,0"
+                 TextAlignment="Center"
+                 Style="{StaticResource ValidationStyle}"
+                 local:WatermarkTextHelper.WatermarkText="Line 2"
+                 Text="{Binding Path=DownValues.BottomLabel}"/>
+        <TextBox x:Name="DownCommand"
+                 Grid.Column="1"
+                 Grid.Row="4"
                  Margin="5,5,5,5"
                  TextAlignment="Center"
-                 Text="{Binding Path=Values.KeyCommandsLabel}"/>
+                 Text="{Binding Path=DownValues.KeyCommandsLabel}"/>
     </Grid>
 </UserControl>
