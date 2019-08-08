@@ -91,6 +91,7 @@
     <Compile Include="Events\LogMessageEventArgs.cs" />
     <Compile Include="Models\ComPort.cs" />
     <Compile Include="Models\ControlPage.cs" />
+    <Compile Include="Models\ControlSet.cs" />
     <Compile Include="Models\ControlValues.cs" />
     <Compile Include="Models\KeyCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />

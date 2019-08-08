@@ -47,29 +47,23 @@
                  Grid.Row="2"
                  Margin="5,5,5,0"
                  TextAlignment="Center"
+                 Style="{StaticResource WaterMarkTextBox}"
+                 local:WatermarkTextHelper.WatermarkText="Line 1"
                  Text= "{Binding Path=UpValues.TopLabel}"/>
         <TextBox x:Name="UpLabel2"
                  Grid.Column="0"
                  Grid.Row="3"
                  Margin="5,5,5,0"
                  TextAlignment="Center"
-                 Text="{Binding Path=UpValues.BottomLabel}">
-            <TextBox.Style>
-                <Style TargetType="{x:Type TextBox}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text.Length, ElementName=UpLabel1, UpdateSourceTrigger=PropertyChanged}" Value="0">
-                            <Setter Property="IsEnabled" Value="False"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
+                 Style="{StaticResource ValidationStyle}"
+                 local:WatermarkTextHelper.WatermarkText="Line 2"
+                 Text= "{Binding Path=UpValues.BottomLabel}"/>
         <TextBox x:Name="UpCommand"
                  Grid.Column="0"
                  Grid.Row="4"
                  Margin="5,5,5,5"
                  TextAlignment="Center"
-                 Text="{Binding Path=UpValues.KeyCommandsLabel}"/>
+                 Text="{Binding Path=UpValues.KeyCommandsLabel, Mode=OneWay}"/>
         <Label Grid.Column="1" 
                Grid.Row="1"
                FontWeight="DemiBold"
@@ -97,6 +91,6 @@
                  Grid.Row="4"
                  Margin="5,5,5,5"
                  TextAlignment="Center"
-                 Text="{Binding Path=DownValues.KeyCommandsLabel}"/>
+                 Text="{Binding Path=DownValues.KeyCommandsLabel, Mode=OneWay}"/>
     </Grid>
 </UserControl>

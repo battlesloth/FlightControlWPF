@@ -72,6 +72,6 @@
                  Grid.Row="3"
                  Margin="5,5,5,5"
                  TextAlignment="Center"
-                 Text="{Binding Path=Values.KeyCommandsLabel}"/>
+                 Text="{Binding Path=Values.KeyCommandsLabel, Mode=OneWay}"/>
     </Grid>
 </UserControl>

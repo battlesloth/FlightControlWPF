@@ -49,21 +49,25 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="260"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" 
-                   Padding="10,0"
-                   FontSize="18"
-                   FontWeight="DemiBold"
-                   VerticalAlignment="Center"
-                   Content="Line 1:"/>
-            <TextBox Grid.Column="1" 
-                     Height="28" 
-                     Text="{Binding  ButtonValues1_1.TopLabel}"/>
+            <ComboBox Grid.Column="0" 
+                      Height="28" 
+                      Width="180" 
+                      ItemsSource="{Binding ControlSets}" 
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding ActiveControlSet}"/>
+            <ComboBox Grid.Column="1" 
+                      Height="28" 
+                      Width="180" 
+                      ItemsSource="{Binding ActiveControlSet.ControlPages}" 
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding ActiveControlPage}"
+                      IsSynchronizedWithCurrentItem="True" />
             <Button Grid.Column="4"
                     Height="28"
                     Width="120"
@@ -79,15 +83,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" 
-                   Padding="10,0"
-                   FontSize="18"
-                   FontWeight="DemiBold"
-                   VerticalAlignment="Center"
-                   Content="Line 2:"/>
-            <TextBox Grid.Column="1"
-                     Height="28" 
-                     Text="{Binding Line2}"/>
             <Button Grid.Column="4"
                     Height="28"
                     Width="120"
@@ -111,18 +106,18 @@
                 </Grid.ColumnDefinitions>
                 <customcontrols:ToggleControl x:Name="Toggle1"
                                           NameLabel="Toggle 1"
-                                          UpValues="{Binding Toggle1Up}"
-                                          DownValues="{Binding Toggle1Down}"
+                                          UpValues="{Binding ActiveControlPage.Toggle1Up}"
+                                          DownValues="{Binding ActiveControlPage.Toggle1Down}"
                                           Grid.Column="0"/>
                 <customcontrols:ToggleControl x:Name="Toggle2"
                                           NameLabel="Toggle 2"
-                                          UpValues="{Binding Toggle2Up}"
-                                          DownValues="{Binding Toggle2Down}"
+                                          UpValues="{Binding ActiveControlPage.Toggle2Up}"
+                                          DownValues="{Binding ActiveControlPage.Toggle2Down}"
                                           Grid.Column="1"/>
                 <customcontrols:ToggleControl x:Name="Toggle3"
                                           NameLabel="Toggle 3"
-                                          UpValues="{Binding Toggle3Up}"
-                                          DownValues="{Binding Toggle3Down}"
+                                          UpValues="{Binding ActiveControlPage.Toggle3Up}"
+                                          DownValues="{Binding ActiveControlPage.Toggle3Down}"
                                           Grid.Column="2"/>
             </Grid>
             <Grid Grid.Row="1">
@@ -133,15 +128,15 @@
                 </Grid.ColumnDefinitions>
                 <customcontrols:ButtonControl x:Name="Button1"
                                           NameLabel="Button 1"
-                                          Values="{Binding Button1Values}"
+                                          Values="{Binding ActiveControlPage.Button1}"
                                           Grid.Column="0"/>
                 <customcontrols:ButtonControl x:Name="Button2"
                                           NameLabel="Button 2"
-                                          Values="{Binding Button2Values}"
+                                          Values="{Binding ActiveControlPage.Button2}"
                                           Grid.Column="1"/>
                 <customcontrols:ButtonControl x:Name="Button3"
                                           NameLabel="Button 3"
-                                          Values="{Binding Button3Values}"
+                                          Values="{Binding ActiveControlPage.Button3}"
                                           Grid.Column="2"/>
             </Grid>
             <Grid Grid.Row="2">
@@ -152,15 +147,15 @@
                 </Grid.ColumnDefinitions>
                 <customcontrols:ButtonControl x:Name="Button4"
                                           NameLabel="Button 4"
-                                          Values="{Binding Button4Values}"
+                                          Values="{Binding ActiveControlPage.Button4}"
                                           Grid.Column="0"/>
                 <customcontrols:ButtonControl x:Name="Button5"
                                           NameLabel="Button 5"
-                                          Values="{Binding Button5Values}"
+                                          Values="{Binding ActiveControlPage.Button5}"
                                           Grid.Column="1"/>
                 <customcontrols:ButtonControl x:Name="Button6"
                                           NameLabel="Button 6"
-                                          Values="{Binding Button6Values}"
+                                          Values="{Binding ActiveControlPage.Button5}"
                                           Grid.Column="2"/>
             </Grid>
             </Grid>
