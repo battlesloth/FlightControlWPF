@@ -3,9 +3,11 @@ using System.Collections.ObjectModel;
 using System.IO.Ports;
 using System.Linq;
 using System.Management;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using FlightControl.Models;
+using FlightControl.Utility;
 using Prism.Commands;
 using Prism.Mvvm;
 
@@ -80,6 +82,10 @@ namespace FlightControl.ViewModels
             serialPort = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
 
             serialPort.DataReceived += OnDataReceived;
+
+            var savedValues = FileOps.GetControlSets().Result;
+
+            ControlSets.AddRange(savedValues);
 
             logger.Debug("Started!");
         }
